@@ -1,0 +1,11 @@
+{
+	"name": "Get Off Those Sites",
+	"description": "A simple extension to keep off distracting sites",
+	"version": "0.1",
+	"permissions": ["storage", "scripting", "alarms"],
+	"optional_host_permissions": ["<all_urls>"],
+	"background": {
+		"service_worker": "background.js"
+	},
+	"manifest_version": 3
+}
