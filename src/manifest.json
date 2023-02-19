@@ -1,0 +1,26 @@
+{
+	"name": "Get Off Those Sites",
+	"description": "A simple extension to keep off distracting sites",
+	"version": "0.1",
+	"permissions": ["storage", "scripting", "alarms", "favicon", "activeTab"],
+	"optional_host_permissions": ["<all_urls>"],
+	"background": {
+		"service_worker": "js/background.js"
+	},
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Get Off Those Sites"
+  },
+  "icons": {
+    "16": "icons/original-16.png",
+    "32": "icons/original-32.png",
+    "48": "icons/original-48.png",
+    "128": "icons/original-128.png"
+  },
+  "manifest_version": 3,
+  "options_page": "options.html",
+  "web_accessible_resources": [{
+    "resources": ["styles.css", "prediction-prompt.html", "js/prediction-prompt.js"],
+    "matches": ["*://*/*"]
+  }]
+}

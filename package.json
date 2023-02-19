@@ -1,0 +1,25 @@
+{
+  "name": "get-off-those-sites",
+  "version": "0.1.0",
+  "description": "A simple extension to keep off distracting sites",
+  "main": "src/manifest.json",
+  "scripts": {
+    "build:css": "npm run compile:css && npm run minify:css",
+    "compile:css": "sass styles.scss src/styles.css --style=compressed -I node_modules --no-source-map",
+    "minify:css": "purgecss --css src/styles.css --content src/*.html src/js/*.js --output src/styles.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/grimsteel/get-off-those-sites.git"
+  },
+  "author": "grimsteel",
+  "bugs": {
+    "url": "https://github.com/grimsteel/get-off-those-sites/issues"
+  },
+  "homepage": "https://github.com/grimsteel/get-off-those-sites#readme",
+  "devDependencies": {
+    "@bulvar/bulma": "^0.11.13",
+    "purgecss": "^5.0.0",
+    "sass": "^1.58.3"
+  }
+}

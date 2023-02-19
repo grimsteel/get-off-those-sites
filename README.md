@@ -2,6 +2,13 @@
 
 A simple extension which aims to keep you off mind numbing sites like Facebook and Twitter (henceforth referred to as "the sites")
 
+## Installation
+
+1. Clone the repo
+2. Open Chrome and go to `chrome://extensions`
+3. Enable developer mode
+4. Click "Load unpacked" and select the src folder
+
 ## User Flow:
 
 **Install**: The user is shown an onboarding page which includes buttons to to add typical sites to the extension

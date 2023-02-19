@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Options - Get Off Those Sites</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <style>
+        #sites-container:empty::after {
+            content: "No sites are currently enabled.";
+        }
+    </style>
+  </head>
+  <body class="m-3 mb-4">
+    <h1 class="title">Get Off Those Sites!</h1>
+    <h2 class="subtitle">Options</h2>
+    <hr>
+    <div class="p-2">
+      <h3 class="title is-5 mb-1 mt-3">Enabled Sites:</h3>
+      <div id="sites-container" class="mb-2"></div>
+      <div class="field">
+        <label class="label" for="add-site-input">Add a Site:</label>
+        <div class="field has-addons">
+          <p class="control is-expanded">
+            <input id="add-site-input" required class="input" type="url" placeholder="Enter the URL to any page on the site." >
+          </p>
+          <p class="control">
+            <button id="add-site-button" class="button is-primary" type="button">Add Site</button>
+          </p>
+        </div>
+        <p class="help ">Make sure to include the full URL, <b>including the www, if applicable.</b></p>
+      </div>
+    </div>
+    <script src="js/options.js"></script>
+  </body>
+</html>

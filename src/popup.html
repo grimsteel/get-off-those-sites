@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css"/>
+    <style>
+      html {
+        width: 600px;
+        height: 200px;
+      }
+    </style>
+  </head>
+  <body class="m-3">
+    <div class="level is-mobile">
+      <div class="level-left">
+        <div class="level-item">
+          <h1 class="title">Get Off Those Sites!</h1>
+        </div>
+      </div>
+      <div class="level-right">
+        <div class="level-item">
+          <a class="button" target="_blank" href="options.html">Options</a>
+        </div>
+      </div>
+    </div>
+    <hr class="my-3">
+    <div class="p-2" id="added-container" hidden>
+      <h3 class="title is-5 mb-1 mt-3">GOTS is enabled for this site</h3>
+      <p hidden>
+        On average, you think you'll spend <span id="predicted"></span> minutes on this site, but you really spend <span id="actual"></span> minutes.
+      </p>
+    </div>
+    <div class="p-2" id="not-added-container" hidden>
+      <h3 class="title is-5 mb-1 mt-3">GOTS is not enabled for this site</h3>
+      <button class="button is-primary" type="button" id="btn-add">Enable GOTS for this site</button>
+    </div>
+    <script src="js/popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+@charset "utf-8";
+
+/*! bulma.io v0.9.4 | MIT License | github.com/jgthms/bulma */
+@use "@bulvar/bulma/sass/utilities" with (
+    $primary: #D6D0CC,
+    $secondary: #302C2C
+);
+@use "@bulvar/bulma/sass/base";
+
+@use "@bulvar/bulma/sass/elements/box";
+@use "@bulvar/bulma/sass/elements/button";
+@use "@bulvar/bulma/sass/elements/container";
+@use "@bulvar/bulma/sass/elements/tag";
+@use "@bulvar/bulma/sass/elements/title";
+@use "@bulvar/bulma/sass/elements/notification";
+@use "@bulvar/bulma/sass/elements/other";
+
+@use "@bulvar/bulma/sass/components/message";
+@use "@bulvar/bulma/sass/components/media";
+
+@use "@bulvar/bulma/sass/form/shared";
+@use "@bulvar/bulma/sass/form/input-textarea";
+@use "@bulvar/bulma/sass/form/tools";
+
+@use "@bulvar/bulma/sass/helpers";
+@use "@bulvar/bulma/sass/components/level";
+@use "@bulvar/bulma/themes/light";
+
+html, body {
+  overflow-y: auto;
+}

@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+</head>
+  <body>
+    <article class="message box p-0 is-warning m-0">
+      <div class="message-header">
+        <p>Watch out! This is a potentially mind-numbing site</p>
+      </div>
+      <div class="message-body">
+        <p>How many minutes do you think you'll spend on this site?</p>
+        <p hidden>
+          On average, you think you'll spend <span id="predicted"></span> minutes on this site, but you really spend <span id="actual"></span> minutes.
+        </p>
+        <div class="control mb-3">
+          <input id="minutes" class="input" type="number" min="1" step="1" placeholder="Prediction (minutes)" required />
+        </div>
+        <div class="buttons">
+          <button id="submit" class="button is-primary" type="button">OK</button>
+          <button id="cancel" class="button is-danger" type="button">Close</button>
+        </div>
+      </div>
+    </article>
+    <script src="js/prediction-prompt.js"></script>
+  </body>
+</html>
