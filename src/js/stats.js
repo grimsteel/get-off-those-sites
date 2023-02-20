@@ -2,7 +2,7 @@ import { Chart } from "./bar-chart.js";
 
 const statsContainer = document.getElementById('stats-container');
 const noStatsContainer = document.getElementById('no-stats-container');
-const hostField = document.getElementById("field-host");
+const domainField = document.getElementById("field-domain");
 const statsChart = document.getElementById("stats-chart");
 const statsTableBody = document.getElementById("stats-table-body");
 const btnExportCsv = document.getElementById("btn-export-csv");
@@ -26,13 +26,13 @@ async function saveFile(name, extension, description, type, contents) {
   await writable.close();          
 }
 
-const host = new URLSearchParams(window.location.search).get("host");
-if (host) {
+const domain = new URLSearchParams(window.location.search).get("domain");
+if (domain) {
   const { previousSessions } = await chrome.storage.local.get("previousSessions");
-  let prev = previousSessions[host];
+  let prev = previousSessions[domain];
   if (prev && prev.length > 0) {
     statsContainer.hidden = false;
-    hostField.innerText = host;
+    domainField.innerText = domain;
     let chartData = {
       labels: [],
       datasets: [
@@ -77,10 +77,10 @@ if (host) {
           acc + `\n${new Date(startTime).toUTCString()},${new Date(endTime).toUTCString()},${Math.round((prediction - startTime) / 1000 / 60)},${endTime - startTime}`,
         "start,end,prediction_min,actual_ms"
       );
-      saveFile(`${host}-stats.csv`, ".csv", "Comma Separated Values files", "text/csv", csv);
+      saveFile(`${domain}-stats.csv`, ".csv", "Comma Separated Values files", "text/csv", csv);
     });
     btnExportJson.addEventListener("click", () => 
-      saveFile(`${host}-stats.json`, ".json", "JavaScript Object Notation files", "application/json", JSON.stringify(prev.map(({ startTime, endTime, prediction }) => ({
+      saveFile(`${domain}-stats.json`, ".json", "JavaScript Object Notation files", "application/json", JSON.stringify(prev.map(({ startTime, endTime, prediction }) => ({
         start: new Date(startTime).toUTCString(),
         end: new Date(endTime).toUTCString(),
         predictionMinutes: Math.round((prediction - startTime) / 1000 / 60),

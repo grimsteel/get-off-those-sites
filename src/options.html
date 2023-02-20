@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Options - Get Off Those Sites</title>
     <link rel="stylesheet" href="styles.css"/>
+    <script src="js/psl.min.js"></script>
     <style>
         #sites-container:empty::after {
             content: "No sites are currently enabled.";
@@ -22,13 +23,13 @@
         <label class="label" for="add-site-input">Add a Site:</label>
         <div class="field has-addons">
           <p class="control is-expanded">
-            <input id="add-site-input" required class="input" type="url" placeholder="Enter the URL to any page on the site." >
+            <input id="add-site-input" required class="input" type="text" placeholder="Enter a domain name..." >
           </p>
           <p class="control">
             <button id="add-site-button" class="button is-primary" type="button">Add Site</button>
           </p>
         </div>
-        <p class="help"><strong>Pro Tip:</strong> Enter something like *.facebook.com to enable the extension to work on <strong>all subdomains</strong></p>
+        <p class="help"><strong>Warning:</strong> Make sure to only enter the domain name, <strong>not the "https://"</strong>. facebook.com, not https://www.facebook.com/some-path</p>
       </div>
     </div>
     <script src="js/options.js"></script>

@@ -2,7 +2,7 @@
 	"name": "Get Off Those Sites",
 	"description": "A simple extension to keep off distracting sites",
 	"version": "0.2",
-	"permissions": ["storage", "scripting", "alarms", "favicon", "activeTab"],
+	"permissions": ["storage", "scripting", "alarms", "favicon"],
 	"optional_host_permissions": ["<all_urls>"],
 	"background": {
 		"service_worker": "js/background.js"

@@ -18,8 +18,8 @@ A simple extension which aims to keep you off mind numbing sites like Facebook a
 **Popup**: If the user is on a site added to the extension, it shows stats about it including average time spent and average time predicted
 
 **Tab**:
-When the user opens a new page, the extension checks if there is an existing "session" with the URL hostname. If there is _not_, the extension creates a session and prompts the user to predict how long they will spend on the site.
+When the user opens a new page, the extension checks if there is an existing "session" with the URL domain. If there is _not_, the extension creates a session and prompts the user to predict how long they will spend on the site.
 
-If a tab is closed, the extension checks to see if _all_ tabs on that hostname are closed. If so, the extension ends the session and calculates the stats
+If a tab is closed, the extension checks to see if _all_ tabs on that domain are closed. If so, the extension ends the session and calculates the stats
 
-When the user's predicted time elapses, the extension grayscales all tabs with the hostname
+When the user's predicted time elapses, the extension grayscales all tabs with the domain
