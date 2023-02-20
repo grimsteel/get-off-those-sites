@@ -2,7 +2,7 @@ const sitesContainer = document.getElementById('sites-container');
 const addSiteButton = document.getElementById('add-site-button');
 const addSiteInput = document.getElementById('add-site-input');
 
-function createSiteElement(origin, realOrigin, { predicted, spent }) {
+function createSiteElement(origin, realOrigin, host, { predicted, spent }) {
   let mediaObject = document.createElement('article');
   mediaObject.classList.add('media');
   let mediaLeft = mediaObject.appendChild(document.createElement('figure'));
@@ -21,8 +21,17 @@ function createSiteElement(origin, realOrigin, { predicted, spent }) {
   siteName.innerText = realOrigin;
   let siteTime = mediaContent.appendChild(document.createElement('p'));
   siteTime.innerText = predicted ? 
-    `You think you'll spend ${predicted} minutes on this site, but you really spend ${Math.round(spent / 1000 / 60)} minutes.` : 
+    `You think you'll spend ${Math.round(predicted / 1000 / 60)} minutes on this site, but you really spend ${Math.round(spent / 1000 / 60)} minutes.` : 
     "We don't have any data on this site yet.";
+  if (predicted) {
+    // include a link to /stats.html
+    let siteStatsLink = mediaContent.appendChild(document.createElement('a'));
+    siteStatsLink.innerText = "More >";
+    siteStatsLink.classList.add("button", "is-small", "is-info", "mt-1");
+    let urlObj = new URL(chrome.runtime.getURL('/stats.html'));
+    urlObj.searchParams.set('host', host);
+    siteStatsLink.href = urlObj.href;
+  }
   let mediaRight = mediaObject.appendChild(document.createElement('div'));
   mediaRight.classList.add('media-right');
   let deleteButton = mediaRight.appendChild(document.createElement('button'));
@@ -35,11 +44,15 @@ function createSiteElement(origin, realOrigin, { predicted, spent }) {
 }
 
 async function refreshAllowedSites() {
-  let [{ origins }, { averageTimeSpent }] = await Promise.all([chrome.permissions.getAll(), chrome.storage.local.get("averageTimeSpent")]);
+  let [{ origins }, { previousSessions }] = await Promise.all([chrome.permissions.getAll(), chrome.storage.local.get("previousSessions")]);
   sitesContainer.textContent = '';
-  origins.forEach(origin => {
-    let { host, origin: realOrigin } = new URL(origin);
-    let siteElement = createSiteElement(origin, realOrigin, averageTimeSpent[host] || { predicted: 0, spent: 0 });
+  let sessionAverages = await chrome.runtime.sendMessage({ type: "calculateAverages", previousSessions: origins.map(origin => {
+    let { host } = new URL(origin);
+    return previousSessions[host];
+  }) });
+  origins.forEach((origin, i) => {
+    let {  origin: realOrigin, host } = new URL(origin);
+    let siteElement = createSiteElement(origin, realOrigin, host, sessionAverages[i] );
     sitesContainer.appendChild(siteElement);
   });
 }

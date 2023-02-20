@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site Statistics - Get Off Those Sites</title>
+    <link rel="stylesheet" href="styles.css"/>
+    <style>
+      html, body {
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body class="p-3">
+    <h1 class="title">Get Off Those Sites!</h1>
+    <h2 class="subtitle">Site Statistics - <span id="field-host"></span></h2>
+    <hr>
+    <div id="stats-container" hidden>
+      <div style="width: 50%;"><canvas id="stats-chart"></canvas></div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Start</th>
+            <th>End</th>
+            <th>Prediction (minutes)</th>
+            <th>Time Spent (minutes)</th>
+          </tr>
+        </thead>
+        <tbody id="stats-table-body"></tbody>
+      </table>
+      <div class="buttons">
+        <button id="btn-export-csv" type="button" class="button">Export as CSV</button>
+        <button id="btn-export-json" type="button" class="button">Export as JSON</button>
+      </div>
+    </div>
+    <div id="no-stats-container" hidden>
+      <p>No statistics are available for this site.</p>
+    </div>
+    <script src="js/stats.js" type="module"></script>
+  </body>
+</html>

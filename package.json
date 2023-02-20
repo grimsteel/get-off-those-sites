@@ -6,7 +6,8 @@
   "scripts": {
     "build:css": "npm run compile:css && npm run minify:css",
     "compile:css": "sass styles.scss src/styles.css --style=compressed -I node_modules --no-source-map",
-    "minify:css": "purgecss --css src/styles.css --content src/*.html src/js/*.js --output src/styles.css"
+    "minify:css": "purgecss --css src/styles.css --content src/*.html src/js/*.js --output src/styles.css",
+    "build:js": "esbuild bar-chart.js --bundle --minify --format=esm --outfile=src/js/bar-chart.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +20,9 @@
   "homepage": "https://github.com/grimsteel/get-off-those-sites#readme",
   "devDependencies": {
     "@bulvar/bulma": "^0.11.13",
+    "esbuild": "^0.17.9",
     "purgecss": "^5.0.0",
-    "sass": "^1.58.3"
+    "sass": "^1.58.3",
+    "chart.js": "^4.2.1"
   }
 }
