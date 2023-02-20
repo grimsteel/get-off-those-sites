@@ -56,15 +56,28 @@ chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
           frameUrl.searchParams.set("actual", Math.round(spent / 1000 / 60));
           popup.src = frameUrl.toString();
           popup.style.position = "fixed";
-          popup.style.top = "1rem";
-          popup.style.right = "1rem";
+          popup.style.top = "50%";
+          popup.style.right = "50%";
+          popup.style.transform = "translate(50%, -50%)";
           popup.style.zIndex = "10000";
           popup.style.borderRadius = "5px";
           popup.style.border = "none";
           popup.width = "400";
           popup.height = "300";
+          // We also want to create a background tint to make the popup stand out
+          let backgroundTint = document.body.appendChild(document.createElement("div"));
+          backgroundTint.style.position = "fixed";
+          backgroundTint.style.top = "0";
+          backgroundTint.style.left = "0";
+          backgroundTint.style.width = "100vw";
+          backgroundTint.style.height = "100vh";
+          backgroundTint.style.zIndex = "9999";
+          backgroundTint.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
           addEventListener("message", e => {
-            if (e.data === "GOTS_CLOSE_IFRAME") popup.remove();
+            if (e.data === "GOTS_CLOSE_IFRAME") {
+              popup.remove();
+              backgroundTint.remove();
+            }
           });
           document.body.appendChild(popup);
           console.log("added");
