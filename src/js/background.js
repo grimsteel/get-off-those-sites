@@ -121,6 +121,7 @@ chrome.runtime.onMessage.addListener(async (message, sender, sendResponse) => {
 
 // When the user's predicted time alarm goes off, we want to start grayscaling the tabs
 chrome.alarms.onAlarm.addListener(async alarm => {
-  let allTabs = await chrome.tabs.query({ url: `*://${alarm.name}/*` });
+  console.debug("[GOTS] Alarm went off for ", alarm.name, ", grayscaling tabs");
+  let allTabs = await chrome.tabs.query({ url: `*://*.${alarm.name}/*` });
   allTabs.forEach(tab => grayscaleTab(tab.id));
 });
